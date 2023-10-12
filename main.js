@@ -2,6 +2,7 @@ const input = document.querySelector('input');
 const btnAdd = document.querySelector('.btnAdd');
 const list = document.querySelector('ul');
 const noText = document.querySelector('.noText');
+const tutorial = document.querySelector('.tutorial');
 const itemSave = [];
 
 
@@ -9,13 +10,13 @@ const itemSave = [];
 function localSave(texto) {
 
     if (sessionStorage.getItem('itemSave') === null) {
-        itemSave.push(texto)
-        sessionStorage.setItem('itemSave', JSON.stringify(itemSave))
+        itemSave.push(texto);
+        sessionStorage.setItem('itemSave', JSON.stringify(itemSave));
     } else {
 
         const getItemSave = JSON.parse(sessionStorage.getItem('itemSave'));
         getItemSave.push(texto);
-        sessionStorage.setItem('itemSave', JSON.stringify(getItemSave))
+        sessionStorage.setItem('itemSave', JSON.stringify(getItemSave));
     }
 
 }
@@ -34,7 +35,8 @@ function showSaveItem() {
             li.appendChild(btnDelete());
             list.appendChild(li);
 
-            noText.style.display = 'none'
+            noText.style.display = 'none';
+            tutorial.style.display = 'none';
         }
     }
 }
@@ -57,14 +59,15 @@ btnAdd.addEventListener('click', (evt) => {
 
         const li = document.createElement('li');
         const itemText = document.createElement('p');
-
         itemText.textContent = texto;
         li.appendChild(itemText);
         li.appendChild(btnDelete());
         list.appendChild(li);
 
         input.value = '';
-        noText.style.display = 'none'
+
+        noText.style.display = 'none';
+        tutorial.style.display = 'none';
 
         localSave(texto);
 
@@ -93,19 +96,10 @@ function btnDelete() {
 
         if (items.length === 0) {
             noText.style.display = 'block';
+            tutorial.style.display = 'block';
         }
 
     })
 
     return btnDel;
 }
-
-
-
-
-
-
-
-
-
-

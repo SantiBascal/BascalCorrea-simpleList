@@ -129,3 +129,16 @@ input{
     font-size: 18px;
     margin: 15px 0;
 }
+
+.tutorial{
+    font-size: 12px;
+    margin: 50px 0;
+    width: 550px;
+    color: #968D5D;
+}
+
+.tutorial p{
+    margin: 25px 0;
+    text-align: center;
+}
+
