@@ -1,0 +1,131 @@
+*{
+    margin: 0;
+}
+
+body{
+    font-family: monospace;
+    background-color: #292929;
+    color: #FFF2AE;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 4px dotted #FFF2AE;
+}
+
+header #titulo{
+    margin: 20px 0;
+}
+
+header #titulo h1{
+    font-size: 30px;
+}
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+#container1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#container1 h2{
+    font-size: 25px;
+    margin: 20px 0;
+}
+
+form{
+    display: flex;
+}
+
+input{
+    padding: 25px 20px;
+    outline: none;
+    width: 400px;
+    background-color: #4C4C4C;
+    border: none;
+    font-family: monospace;
+    color: #FFF2AE;
+}
+
+
+.btnAdd{
+    margin: 0 10px;
+    outline: none;
+    font-family: monospace;
+    font-size: 18px;
+    width: 100px;
+    height: 75px;
+    background-color: #4C4C4C;
+    color: #FFF2AE;
+    border: none;
+}
+
+.btnAdd:hover{
+    background-color: #FFF2AE;
+    color: #292929;
+}
+
+.btnDel{
+    margin: 0 10px;
+    outline: none;
+    font-family: monospace;
+    font-size: 18px;
+    width: 65px;
+    height: 50px;
+    background-color: #4C4C4C;
+    color: #FFF2AE;
+    border: none;
+}
+
+.btnDel:hover{
+    background-color: #FFF2AE;
+    color: #292929;
+}
+
+#container2{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    font-family: monospace;
+    font-size: 20px;
+}
+
+.list ul{
+    list-style: none;
+    font-size: 18px;
+    margin: 10px 0;
+
+}
+
+.list ul li{
+    margin: 10px 0;
+    width: 500px;
+    padding: 10px;
+    border-bottom: 3px dotted #FFF2AE;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list ul li p{
+    max-width: 300px;
+}
+
+.itemList{
+    border-bottom: 4px dotted #FFF2AE;
+}
+
+.noText{
+    font-size: 18px;
+    margin: 15px 0;
+}
