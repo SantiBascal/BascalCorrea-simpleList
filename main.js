@@ -3,19 +3,24 @@ const btnAdd = document.querySelector('.btnAdd');
 const list = document.querySelector('ul');
 const noText = document.querySelector('.noText');
 const tutorial = document.querySelector('.tutorial');
-const itemSave = [];
+let itemSave = [];
 
 
 
-function localSave(texto) {
-
+function localSave(texto, itemId) {
+    const savedItemObj = {
+        texto,
+        itemId
+    }
+ 
+    
     if (sessionStorage.getItem('itemSave') === null) {
-        itemSave.push(texto);
+        itemSave.push(savedItemObj)
         sessionStorage.setItem('itemSave', JSON.stringify(itemSave));
     } else {
 
         const getItemSave = JSON.parse(sessionStorage.getItem('itemSave'));
-        getItemSave.push(texto);
+        getItemSave.push(savedItemObj);
         sessionStorage.setItem('itemSave', JSON.stringify(getItemSave));
     }
 
@@ -25,12 +30,18 @@ function localSave(texto) {
 
 function showSaveItem() {
     const saveItem = JSON.parse(sessionStorage.getItem('itemSave'));
+    console.log(saveItem)
     if (saveItem !== null) {
         for (let x = 0; x < saveItem.length; x += 1) {
+            let allItems = saveItem[x];
+            let saveText = allItems.texto;
+            let saveId = allItems.itemId;
+            
             const li = document.createElement('li');
             const itemText = document.createElement('p');
+            itemText.textContent = saveText;
+            itemText.setAttribute('class', saveId)
 
-            itemText.textContent = saveItem[x];
             li.appendChild(itemText);
             li.appendChild(btnDelete());
             list.appendChild(li);
@@ -41,6 +52,11 @@ function showSaveItem() {
     }
 }
 
+
+
+function delSaveItem()){
+
+}
 
 
 showSaveItem()
@@ -59,7 +75,9 @@ btnAdd.addEventListener('click', (evt) => {
 
         const li = document.createElement('li');
         const itemText = document.createElement('p');
+        const itemId = Date.now();
         itemText.textContent = texto;
+        itemText.setAttribute('class', itemId);
         li.appendChild(itemText);
         li.appendChild(btnDelete());
         list.appendChild(li);
@@ -69,7 +87,7 @@ btnAdd.addEventListener('click', (evt) => {
         noText.style.display = 'none';
         tutorial.style.display = 'none';
 
-        localSave(texto);
+        localSave(texto, itemId);
 
 
     }
