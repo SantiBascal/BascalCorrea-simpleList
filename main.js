@@ -7,10 +7,56 @@ let itemSave = [];
 
 
 
-function localSave(texto, itemId) {
+
+function eliminarObjeto(id) {
+    let arrayGuardado = JSON.parse(sessionStorage.getItem('itemSave'));
+
+    let indiceAEliminar = arrayGuardado.findIndex(function(objeto) {
+        return objeto.Id === id;
+    });
+
+ 
+    if (indiceAEliminar !== -1) {
+        arrayGuardado.splice(indiceAEliminar, 1);
+
+
+        sessionStorage.setItem('itemSave', JSON.stringify(arrayGuardado));
+
+        console.log('Objeto eliminado correctamente.');
+    } else {
+        console.log('Objeto no encontrado en el array.');
+    }
+}
+
+function btnDelete() {
+    let btnDel = document.createElement("button");
+    btnDel.textContent = "del";
+    btnDel.className = "btnDel";
+    btnDel.addEventListener("click", function(evt) {
+        const item = evt.target.parentElement;
+        list.removeChild(item)
+
+        let idDel = Number(item.className);
+
+        eliminarObjeto(idDel);
+
+        const Items = document.querySelectorAll("li");
+        if (Items.length === 0) {
+            noText.style.display = "block";
+            tutorial.style.display = "block";
+        }
+    });
+
+    return btnDel;
+}
+
+
+
+
+function localSave(texto, Id) {
     const savedItemObj = {
         texto,
-        itemId
+        Id
     }
 
 
@@ -34,7 +80,7 @@ function showSaveItem() {
         for (let x = 0; x < saveItem.length; x += 1) {
             let allItems = saveItem[x];
             let saveText = allItems.texto;
-            let saveId = allItems.itemId;
+            let saveId = allItems.Id;
 
             const li = document.createElement('li');
             const itemText = document.createElement('p');
@@ -54,10 +100,6 @@ function showSaveItem() {
 
 
 showSaveItem()
-
-
-
-
 
 btnAdd.addEventListener('click', (evt) => {
     evt.preventDefault();
@@ -87,26 +129,3 @@ btnAdd.addEventListener('click', (evt) => {
 
 });
 
-
-
-function btnDelete() {
-    const btnDel = document.createElement('button');
-
-
-    btnDel.textContent = 'del';
-    btnDel.className = 'btnDel';
-
-    btnDel.addEventListener('click', (evt) => {
-        const item = evt.target.parentElement;
-        list.removeChild(item);
-
-        const items = document.querySelectorAll('li')
-        if (items.length === 0) {
-            noText.style.display = 'block';
-            tutorial.style.display = 'block';
-        }
-
-    })
-
-    return btnDel;
-}
