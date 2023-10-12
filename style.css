@@ -2,6 +2,8 @@
     margin: 0;
 }
 
+
+
 body{
     font-family: monospace;
     background-color: #292929;
@@ -115,6 +117,7 @@ input{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    text-overflow: initial;
 }
 
 .list ul li p{
@@ -142,3 +145,54 @@ input{
     text-align: center;
 }
 
+
+@media(max-width: 425px){
+    header #titulo h1{
+        font-size: 25px;
+    }
+
+    #container1 h2{
+        font-size: 20px;
+    }
+    
+
+    input{
+        width: 170px;
+        padding: 15px 10px;
+    }
+
+    .btnAdd{
+        font-size: 12px;
+        width: 70px;
+        height: 55px;
+
+    }
+
+    #container2{
+        font-size: 15px;
+    }
+
+    .noText{
+        font-size: 15px;
+    }
+
+    .list ul{
+        padding: 0;
+    }
+
+    .list ul li{
+        width: 260px;
+        padding: 10px;
+    }
+
+    .list ul li p{
+        max-width: 100px;
+    }
+
+    .tutorial{
+        font-size: 12px;
+        margin: 50px 0;
+        width: 280px;
+        color: #968D5D;
+    }
+}
